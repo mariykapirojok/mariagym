@@ -1,0 +1,554 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OxyGYM - фитнес-клуб в Ростове-на-Дону">
+  <title>OxyGYM</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <nav class="header-navigation container" role="navigation">
+      <a href="#home" class="logo" aria-label="Перейти к главной секции">OXYGYM</a>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Главная</a></li>
+        <li><a href="#about" class="nav-link">О нас</a></li>
+        <li><a href="#courses" class="nav-link">Курсы</a></li>
+        <li><a href="#schedule" class="nav-link">Расписание</a></li>
+        <li><a href="#prices" class="nav-link">Выбери свой фитнес</a></li>
+        <li><a href="#contacts" class="nav-link">Контакты</a></li>
+      </ul>
+      <button class="nav-icon" aria-label="Открыть меню">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="section-hero">
+      <div class="hero-box container">
+        <h1 class="heading heading--1">Место для ваших фитнес целей</h1>
+        <p class="description">Мы предлагаем функциональные тренировки, плиометрические боксы, занятия аэробикой и многое другое.</p>
+        <button class="btn btn__primary open-popup">Запись</button>
+      </div>
+    </section>
+
+    <section id="about" class="section-about">
+      <div class="about-box container">
+        <div class="about-box__content">
+          <h2 class="heading heading--2">О клубе OxyGYM</h2>
+          <p>Фитнес-клуб OxyGYM — это современный центр здоровья и фитнеса, расположенный в самом сердце Ростова-на-Дону. Мы предлагаем передовые тренажерные залы, оснащенные премиум-оборудованием от мировых брендов, разнообразные групповые программы для всех возрастов и уровней подготовки, а также индивидуальные тренировки с сертифицированными тренерами. Наша миссия — помочь вам достичь идеальной формы и улучшить качество жизни через спорт.</p>
+          <p>Мы гордимся нашим дружелюбным сообществом и высоким стандартом обслуживания. У нас есть все необходимое: просторные залы, душевые и раздевалки, а также зона отдыха с бесплатным Wi-Fi. Присоединяйтесь к нам и начните свой путь к здоровью уже сегодня!</p>
+          <a href="#contacts" class="link-button link-button--bordered">Узнай больше</a>
+        </div>
+        <div class="about-box__image">
+          <div class="image-wrapper">
+            <img src="images/gym-hall.jpg" alt="Тренажерный зал OxyGYM" class="image-1">
+            <img src="images/group-training.jpg" alt="Групповые занятия в OxyGYM" class="image-2">
+            <img src="images/zone.jpg" alt="Зона отдыха в OxyGYM" class="image-3">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses" class="section-courses">
+      <div class="courses-box container">
+        <div class="courses-heading">
+          <h2 class="heading heading--2">Наши Курсы</h2>
+          <p>Занятия для улучшения физической формы и здоровья.</p>
+        </div>
+        <div class="courses-grid">
+          <article class="course-card">
+            <img class="course-card__img" src="images/bodybuilding.jpg" alt="Боди билдинг">
+            <div class="course-card__overlay">
+              <div class="text">Процесс преобразования тела за счёт увеличения мышечной мускулатуры.</div>
+            </div>
+            <h3 class="course-card__title">Body Building</h3>
+          </article>
+          <article class="course-card">
+            <img class="course-card__img" src="images/crossfit.jpg" alt="Кроссфит">
+            <div class="course-card__overlay">
+              <div class="text">Круговые тренировки высокой интенсивности.</div>
+            </div>
+            <h3 class="course-card__title">Cross Fit</h3>
+          </article>
+          <article class="course-card">
+            <img class="course-card__img" src="images/gymnastics.jpg" alt="Гимнастика">
+            <div class="course-card__overlay">
+              <div class="text">Упражнения для укрепления мышц.</div>
+            </div>
+            <h3 class="course-card__title">Гимнастика</h3>
+          </article>
+          <article class="course-card">
+            <img class="course-card__img" src="images/strength.jpg" alt="Силовые тренировки">
+            <div class="course-card__overlay">
+              <div class="text">Тренировки для увеличения силы и выносливости.</div>
+            </div>
+            <h3 class="course-card__title">Силовые тренировки</h3>
+          </article>
+          <article class="course-card">
+            <img class="course-card__img" src="images/yoga.jpg" alt="Йога">
+            <div class="course-card__overlay">
+              <div class="text">Практики для гибкости и релаксации.</div>
+            </div>
+            <h3 class="course-card__title">Йога</h3>
+          </article>
+          <article class="course-card">
+            <img class="course-card__img" src="images/cardio.jpg" alt="Кардио">
+            <div class="course-card__overlay">
+              <div class="text">Занятия для улучшения работы сердечно-сосудистой системы.</div>
+            </div>
+            <h3 class="course-card__title">Кардио</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule" class="section-schedule">
+      <div class="container">
+        <h2 class="heading heading--2">Расписание занятий</h2>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>День</th>
+              <th>Время</th>
+              <th>Занятие</th>
+              <th>Тренер</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Понедельник</td>
+              <td>10:00-11:00</td>
+              <td>Йога</td>
+              <td>Елена Лозовая</td>
+            </tr>
+            <tr>
+              <td>Понедельник</td>
+              <td>18:00-19:00</td>
+              <td>Body Building</td>
+              <td>Данил Марченко</td>
+            </tr>
+            <tr>
+              <td>Вторник</td>
+              <td>17:00-18:00</td>
+              <td>Силовые тренировки</td>
+              <td>Андрей Глушаков</td>
+            </tr>
+            <tr>
+              <td>Вторник</td>
+              <td>19:00-20:00</td>
+              <td>Кардио</td>
+              <td>Дмитрий Петров</td>
+            </tr>
+            <tr>
+              <td>Среда</td>
+              <td>11:00-12:00</td>
+              <td>Йога</td>
+              <td>Елена Лозовая</td>
+            </tr>
+            <tr>
+              <td>Среда</td>
+              <td>19:00-20:00</td>
+              <td>Cross Fit</td>
+              <td>Светлана Микитюк</td>
+            </tr>
+            <tr>
+              <td>Четверг</td>
+              <td>18:00-19:00</td>
+              <td>Силовые тренировки</td>
+              <td>Андрей Глушаков</td>
+            </tr>
+            <tr>
+              <td>Четверг</td>
+              <td>20:00-21:00</td>
+              <td>Кардио</td>
+              <td>Дмитрий Петров</td>
+            </tr>
+            <tr>
+              <td>Пятница</td>
+              <td>17:00-18:00</td>
+              <td>Гимнастика</td>
+              <td>Ярослав Михальцов</td>
+            </tr>
+            <tr>
+              <td>Суббота</td>
+              <td>09:00-10:00</td>
+              <td>Йога</td>
+              <td>Елена Лозовая</td>
+            </tr>
+            <tr>
+              <td>Суббота</td>
+              <td>11:00-12:00</td>
+              <td>Body Building</td>
+              <td>Данил Марченко</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-trainers">
+      <div class="container">
+        <h2 class="heading heading--2">Наши тренеры</h2>
+        <div class="trainers-content">
+          <div class="trainer-card">
+            <img src="images/trainer-2.jpg" alt="Данил Марченко" class="trainer-img">
+            <h3>Данил Марченко</h3>
+            <p>Специализация: Body Building, 5 лет опыта.</p>
+            <button class="btn btn__primary open-trainer-popup" data-trainer="Данил Марченко">Записаться</button>
+          </div>
+          <div class="trainer-card">
+            <img src="images/trainer-3.jpg" alt="Светлана Микитюк" class="trainer-img">
+            <h3>Светлана Микитюк</h3>
+            <p>Специализация: Cross Fit, 7 лет опыта.</p>
+            <button class="btn btn__primary open-trainer-popup" data-trainer="Светлана Микитюк">Записаться</button>
+          </div>
+          <div class="trainer-card">
+            <img src="images/trainer-4.jpg" alt="Ярослав Михальцов" class="trainer-img">
+            <h3>Ярослав Михальцов</h3>
+            <p>Специализация: Гимнастика, 4 года опыта.</p>
+            <button class="btn btn__primary open-trainer-popup" data-trainer="Ярослав Михальцов">Записаться</button>
+          </div>
+          <div class="trainer-card">
+            <img src="images/trainer-5.jpg" alt="Андрей Глушаков" class="trainer-img">
+            <h3>Андрей Глушаков</h3>
+            <p>Специализация: Силовые тренировки, 6 лет опыта.</p>
+            <button class="btn btn__primary open-trainer-popup" data-trainer="Андрей Глушаков">Записаться</button>
+          </div>
+          <div class="trainer-card">
+            <img src="images/trainer-6.jpg" alt="Елена Лозовая" class="trainer-img">
+            <h3>Елена Лозовая</h3>
+            <p>Специализация: Йога, 8 лет опыта.</p>
+            <button class="btn btn__primary open-trainer-popup" data-trainer="Елена Лозовая">Записаться</button>
+          </div>
+          <div class="trainer-card">
+            <img src="images/trainer-7.jpg" alt="Дмитрий Петров" class="trainer-img">
+            <h3>Дмитрий Петров</h3>
+            <p>Специализация: Кардио, 5 лет опыта.</p>
+            <button class="btn btn__primary open-trainer-popup" data-trainer="Дмитрий Петров">Записаться</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prices" class="section-prices">
+      <div class="container">
+        <h2 class="heading heading--2">Выбери свой фитнес</h2>
+        <div class="prices-box">
+          <article class="price-card">
+            <h3 class="heading heading--2">Пробный</h3>
+            <p class="price">500 ₽</p>
+            <p>1 занятие на выбор</p>
+            <p class="price-description">Подходит для знакомства с клубом и тренерами.</p>
+            <button class="btn btn__primary open-popup">Купить</button>
+          </article>
+          <article class="price-card">
+            <h3 class="heading--2">Месячный</h3>
+            <p class="price">2000 ₽</p>
+            <p>Доступ ко всем групповым занятиям</p>
+            <p class="price-description">Идеально для регулярных тренировок.</p>
+            <button class="btn btn__primary open-popup">Купить</button>
+          </article>
+          <article class="price-card">
+            <h3 class="heading--2">Квартальный</h3>
+            <p class="price">5500 ₽</p>
+            <p>Безлимитный доступ + 1 персональная тренировка</p>
+            <p class="price-description">Для тех, кто хочет стабильности и экономии.</p>
+            <button class="btn btn__primary open-popup">Купить</button>
+          </article>
+          <article class="price-card">
+            <h3 class="heading--2">Полугодовой</h3>
+            <p class="price">10000 ₽</p>
+            <p>Безлимитный доступ + 2 персональные тренировки</p>
+            <p class="price-description">Отличный выбор для долгосрочного прогресса.</p>
+            <button class="btn btn__primary open-popup">Купить</button>
+          </article>
+          <article class="price-card">
+            <h3 class="heading--2">Годовой</h3>
+            <p class="price">18000 ₽</p>
+            <p>Безлимитный доступ + 3 персональные тренировки</p>
+            <p class="price-description">Максимальная выгода для долгосрочных целей.</p>
+            <button class="btn btn__primary open-popup">Купить</button>
+          </article>
+          <article class="price-card">
+            <h3 class="heading--2">VIP</h3>
+            <p class="price">30000 ₽</p>
+            <p>Безлимитный доступ + 10 персональных тренировок + индивидуальный план</p>
+            <p class="price-description">Премиум-пакет для максимального прогресса.</p>
+            <button class="btn btn__primary open-popup">Купить</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="section-contact">
+      <div class="contact-box container">
+        <div class="form-grp">
+          <h2 class="heading heading--2">Свяжитесь с нами</h2>
+          <form id="contact-form" class="form-flex">
+            <input type="text" class="form form__input" placeholder="Имя" required>
+            <input type="email" class="form form__input" placeholder="Электронная почта" required>
+            <textarea class="form form__input" placeholder="Сообщение" rows="4" required></textarea>
+            <button type="submit" class="btn btn__primary">Отправить</button>
+          </form>
+        </div>
+        <div id="mapid" class="map-placeholder"></div>
+      </div>
+    </section>
+
+    <section class="section-reviews">
+      <div class="container">
+        <h2 class="heading heading--2 reviews-heading">Отзывы</h2>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <p>Очень крутой клуб! Тренеры профессионалы, оборудование новое. Рекомендую всем!</p>
+            <p class="review-author">Анна К.</p>
+          </article>
+          <article class="review-card">
+            <p>Йога с Еленой — просто находка! Чувствую себя обновленной после каждого занятия.</p>
+            <p class="review-author">Мария С.</p>
+          </article>
+          <article class="review-card">
+            <p>Отличное место для кроссфита, атмосфера мотивирует!</p>
+            <p class="review-author">Игорь П.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section-footer">
+    <div class="footer-box container">
+      <div class="contact-details">
+        <h3 class="nav-name">OXYGYM</h3>
+        <ul class="contact-data">
+          <li>г. Ростов-на-Дону, ул. Спортивная 15</li>
+          <li>+7(899) 500-32-40</li>
+          <li><a href="mailto:info@oxygym.ru">info@oxygym.ru</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h3 class="nav-name">Быстрый переход</h3>
+        <ul>
+          <li><a href="#home" class="nav-link">Главная</a></li>
+          <li><a href="#about" class="nav-link">О нас</a></li>
+          <li><a href="#courses" class="nav-link">Курсы</a></li>
+          <li><a href="#schedule" class="nav-link">Расписание</a></li>
+          <li><a href="#prices" class="nav-link">Выбери свой фитнес</a></li>
+          <li><a href="#contacts" class="nav-link">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3 class="nav-name">Мы в соцсетях</h3>
+        <ul class="social-links">
+          <li><a href="https://vk.com/oxygym" target="_blank" class="social-link">VK</a></li>
+          <li><a href="https://instagram.com/oxygym" target="_blank" class="social-link">Instagram</a></li>
+          <li><a href="https://t.me/oxygym" target="_blank" class="social-link">Telegram</a></li>
+        </ul>
+      </div>
+      <p class="legel">© 2025 OxyGYM. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <nav class="bottom-navigation">
+    <div class="container">
+      <ul class="bottom-nav-list">
+        <li>г. Ростов-на-Дону, ул. Спортивная 15</li>
+        <li><a href="tel:+78995003240">+7(899) 500-32-40</a></li>
+        <li><a href="mailto:info@oxygym.ru">info@oxygym.ru</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="overlay">
+    <div class="popup">
+      <h2>Запишитесь к нам!</h2>
+      <input type="text" id="popup-name" class="form" placeholder="Имя" required>
+      <input type="email" id="popup-email" class="form" placeholder="Электронная почта" required>
+      <input type="tel" id="popup-phone" class="form" placeholder="Телефон" required>
+      <button class="btn submit-popup">Отправить</button>
+      <button class="btn close-popup">Закрыть</button>
+    </div>
+  </div>
+
+  <div class="overlay trainer-overlay">
+    <div class="trainer-popup">
+      <h2 id="trainer-name"></h2>
+      <input type="text" id="trainer-popup-name" class="form" placeholder="Ваше имя" required>
+      <input type="tel" id="trainer-popup-phone" class="form" placeholder="Ваш телефон" required>
+      <button class="btn submit-trainer-popup">Записаться</button>
+      <button class="btn close-trainer-popup">Закрыть</button>
+    </div>
+  </div>
+
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript"></script>
+  <script>
+    // Плавный скролл к секциям
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Мобильное меню с анимацией
+    const navIcon = document.querySelector('.nav-icon');
+    const navMenu = document.querySelector('.nav-menu');
+    navIcon.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      navIcon.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Анимация появления секций при прокрутке
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+
+    // Подсветка активного пункта меню при прокрутке
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 60) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Попап для записи
+    const openPopup = document.querySelectorAll('.open-popup');
+    const closePopup = document.querySelector('.close-popup');
+    const overlay = document.querySelector('.overlay');
+    const submitPopup = document.querySelector('.submit-popup');
+    openPopup.forEach(btn => btn.addEventListener('click', () => {
+      overlay.style.display = 'flex';
+      overlay.classList.add('fade-in');
+    }));
+    closePopup.addEventListener('click', () => {
+      overlay.classList.remove('fade-in');
+      overlay.classList.add('fade-out');
+      setTimeout(() => overlay.style.display = 'none', 500);
+    });
+    submitPopup.addEventListener('click', () => {
+      const name = document.getElementById('popup-name').value;
+      const email = document.getElementById('popup-email').value;
+      const phone = document.getElementById('popup-phone').value;
+      if (name && email && phone) {
+        alert('Заявка отправлена! Мы скоро свяжемся с вами.');
+        overlay.classList.remove('fade-in');
+        overlay.classList.add('fade-out');
+        setTimeout(() => overlay.style.display = 'none', 500);
+      } else {
+        alert('Пожалуйста, заполните все поля.');
+      }
+    });
+
+    // Попап для записи к тренеру
+    const openTrainerPopup = document.querySelectorAll('.open-trainer-popup');
+    const closeTrainerPopup = document.querySelector('.close-trainer-popup');
+    const trainerOverlay = document.querySelector('.trainer-overlay');
+    const submitTrainerPopup = document.querySelector('.submit-trainer-popup');
+    openTrainerPopup.forEach(btn => btn.addEventListener('click', () => {
+      const trainerName = btn.getAttribute('data-trainer');
+      document.getElementById('trainer-name').textContent = `Запись к ${trainerName}`;
+      trainerOverlay.style.display = 'flex';
+      trainerOverlay.classList.add('fade-in');
+    }));
+    closeTrainerPopup.addEventListener('click', () => {
+      trainerOverlay.classList.remove('fade-in');
+      trainerOverlay.classList.add('fade-out');
+      setTimeout(() => trainerOverlay.style.display = 'none', 500);
+    });
+    submitTrainerPopup.addEventListener('click', () => {
+      const name = document.getElementById('trainer-popup-name').value;
+      const phone = document.getElementById('trainer-popup-phone').value;
+      if (name && phone) {
+        alert(`Вы записаны к тренеру! Мы свяжемся с вами для подтверждения.`);
+        trainerOverlay.classList.remove('fade-in');
+        trainerOverlay.classList.add('fade-out');
+        setTimeout(() => trainerOverlay.style.display = 'none', 500);
+      } else {
+        alert('Пожалуйста, заполните все поля.');
+      }
+    });
+
+    // Инициализация Яндекс.Карты
+    ymaps.ready(() => {
+      const map = new ymaps.Map('mapid', {
+        center: [47.222, 39.720], // Координаты центра Ростова-на-Дону
+        zoom: 14,
+        controls: ['zoomControl']
+      });
+      const placemark = new ymaps.Placemark([47.222, 39.720], {
+        balloonContent: 'OxyGYM, ул. Спортивная 15'
+      });
+      map.geoObjects.add(placemark);
+    });
+
+    // Обработка формы контактов
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      alert('Ваше сообщение отправлено! Мы скоро свяжемся с вами.');
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
