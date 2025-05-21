@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OXYGYM</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+  <div class="container">
+    <div class="header-navigation">
+      <div class="header-left">
+        <a href="#" class="logo">OXYGYM</a>
+        <a href="tel:+78995003240" class="phone-number">+7(899) 500-32-40</a>
+      </div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#hero" class="nav-link active">Главная</a></li>
+          <li><a href="#about" class="nav-link">О нас</a></li>
+          <li><a href="#courses" class="nav-link">Курсы</a></li>
+          <li><a href="#schedule" class="nav-link">Расписание</a></li>
+          <li><a href="#prices" class="nav-link">Выбери свой фитнес</a></li>
+          <li><a href="#contact" class="nav-link">Контакты</a></li>
+        </ul>
+      </nav>
+      <button class="nav-icon">☰</button>
+    </div>
+  </div>
+</header>
+
+  <section class="section-hero section-animate" id="hero">
+    <div class="container hero-box">
+      <h1 class="heading heading--1">Место для ваших фитнес целей</h1>
+      <p class="description">Мы предлагаем функциональные тренировки, плиометрические боксы, занятия аэробикой и многое другое.</p>
+      <a href="#" class="btn-primary booking-open">Запись</a>
+    </div>
+  </section>
+
+  <section class="section-about section-animate" id="about">
+    <div class="container about-box">
+      <div class="about-box__content">
+        <h2 class="heading heading--2">О клубе OxyGYM</h2>
+        <div class="about-text-box">
+          <p class="description">Добро пожаловать в OxyGYM — ваш путь к здоровью и силе начинается здесь! Наш фитнес-клуб в центре Ростова-на-Дону оснащён топовым оборудованием от мировых брендов, просторными залами и уютной зоной отдыха. Мы предлагаем групповые тренировки, йогу, кроссфит и персональные занятия с опытными тренерами, которые помогут вам достичь целей.</p>
+          <p class="description">OxyGYM — это не просто зал, это сообщество единомышленников, где каждый найдёт поддержку и мотивацию. У нас есть всё для вашего комфорта: современные раздевалки, душевые и бесплатный Wi-Fi. Присоединяйтесь к нам и станьте частью нашей фитнес-семьи!</p>
+        </div>
+        <a href="#" class="btn-primary about-cta">Узнать больше об абонементах</a>
+      </div>
+      <div class="about-box__image">
+        <div class="image-wrapper">
+          <img src="images/gym-hall.jpg" alt="Фитнес-зал" class="image-1">
+          <img src="images/group-training.jpg" alt="Тренировка" class="image-2">
+          <img src="images/zone.jpg" alt="Оборудование" class="image-3">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-courses section-animate" id="courses">
+    <div class="container courses-box">
+      <h2 class="heading heading--2">Наши Курсы</h2>
+      <p class="description">Занятия для улучшения физической формы и здоровья.</p>
+      <div class="courses-grid">
+        <div class="course-card">
+          <img src="images/bodybuilding.jpg" alt="Body Building" class="course-card__img">
+          <div class="course-card__overlay">
+            <span class="text">Процесс преобразования тела за счёт увеличения мышечной мускулатуры.</span>
+          </div>
+          <h3 class="course-card__title">Body Building</h3>
+        </div>
+        <div class="course-card">
+          <img src="images/crossfit.jpg" alt="Cross Fit" class="course-card__img">
+          <div class="course-card__overlay">
+            <span class="text">Круговые тренировки высокой интенсивности.</span>
+          </div>
+          <h3 class="course-card__title">Cross Fit</h3>
+        </div>
+        <div class="course-card">
+          <img src="images/gymnastics.jpg" alt="Гимнастика" class="course-card__img">
+          <div class="course-card__overlay">
+            <span class="text">Упражнения для укрепления мышц.</span>
+          </div>
+          <h3 class="course-card__title">Гимнастика</h3>
+        </div>
+        <div class="course-card">
+          <img src="images/strength.jpg" alt="Силовые тренировки" class="course-card__img">
+          <div class="course-card__overlay">
+            <span class="text">Тренировки для увеличения силы и выносливости.</span>
+          </div>
+          <h3 class="course-card__title">Силовые тренировки</h3>
+        </div>
+        <div class="course-card">
+          <img src="images/yoga.jpg" alt="Йога" class="course-card__img">
+          <div class="course-card__overlay">
+            <span class="text">Практики для гибкости и релаксации.</span>
+          </div>
+          <h3 class="course-card__title">Йога</h3>
+        </div>
+        <div class="course-card">
+          <img src="images/cardio.jpg" alt="Кардио" class="course-card__img">
+          <div class="course-card__overlay">
+            <span class="text">Занятия для улучшения работы сердечно-сосудистой системы.</span>
+          </div>
+          <h3 class="course-card__title">Кардио</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-schedule section-animate" id="schedule">
+    <div class="container">
+      <h2 class="heading heading--2">Расписание занятий</h2>
+      <div class="schedule-list">
+        <div class="schedule-day">
+          <h3 class="heading heading--3">Понедельник</h3>
+          <div class="schedule-classes">
+            <div class="schedule-class" data-class="Йога" data-day="Понедельник" data-time="10:00-11:00" data-trainer="Елена Лозовая">
+              <span class="class-time">10:00-11:00</span>
+              <span class="class-name">Йога</span>
+              <span class="class-trainer">Елена Лозовая</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+            <div class="schedule-class" data-class="Body Building" data-day="Понедельник" data-time="18:00-19:00" data-trainer="Данил Марченко">
+              <span class="class-time">18:00-19:00</span>
+              <span class="class-name">Body Building</span>
+              <span class="class-trainer">Данил Марченко</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+          </div>
+        </div>
+        <div class="schedule-day">
+          <h3 class="heading heading--3">Вторник</h3>
+          <div class="schedule-classes">
+            <div class="schedule-class" data-class="Силовые тренировки" data-day="Вторник" data-time="17:00-18:00" data-trainer="Андрей Глушаков">
+              <span class="class-time">17:00-18:00</span>
+              <span class="class-name">Силовые тренировки</span>
+              <span class="class-trainer">Андрей Глушаков</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+            <div class="schedule-class" data-class="Кардио" data-day="Вторник" data-time="19:00-20:00" data-trainer="Дмитрий Петров">
+              <span class="class-time">19:00-20:00</span>
+              <span class="class-name">Кардио</span>
+              <span class="class-trainer">Дмитрий Петров</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+          </div>
+        </div>
+        <div class="schedule-day">
+          <h3 class="heading heading--3">Среда</h3>
+          <div class="schedule-classes">
+            <div class="schedule-class" data-class="Йога" data-day="Среда" data-time="11:00-12:00" data-trainer="Елена Лозовая">
+              <span class="class-time">11:00-12:00</span>
+              <span class="class-name">Йога</span>
+              <span class="class-trainer">Елена Лозовая</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+            <div class="schedule-class" data-class="Cross Fit" data-day="Среда" data-time="19:00-20:00" data-trainer="Ярослав Михальцов">
+              <span class="class-time">19:00-20:00</span>
+              <span class="class-name">Cross Fit</span>
+              <span class="class-trainer">Ярослав Михальцов</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+          </div>
+        </div>
+        <div class="schedule-day">
+          <h3 class="heading heading--3">Четверг</h3>
+          <div class="schedule-classes">
+            <div class="schedule-class" data-class="Силовые тренировки" data-day="Четверг" data-time="18:00-19:00" data-trainer="Андрей Глушаков">
+              <span class="class-time">18:00-19:00</span>
+              <span class="class-name">Силовые тренировки</span>
+              <span class="class-trainer">Андрей Глушаков</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+            <div class="schedule-class" data-class="Кардио" data-day="Четверг" data-time="20:00-21:00" data-trainer="Дмитрий Петров">
+              <span class="class-time">20:00-21:00</span>
+              <span class="class-name">Кардио</span>
+              <span class="class-trainer">Дмитрий Петров</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+          </div>
+        </div>
+        <div class="schedule-day">
+          <h3 class="heading heading--3">Пятница</h3>
+          <div class="schedule-classes">
+            <div class="schedule-class" data-class="Гимнастика" data-day="Пятница" data-time="17:00-18:00" data-trainer="Светлана Микитюк">
+              <span class="class-time">17:00-18:00</span>
+              <span class="class-name">Гимнастика</span>
+              <span class="class-trainer">Светлана Микитюк</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+          </div>
+        </div>
+        <div class="schedule-day">
+          <h3 class="heading heading--3">Суббота</h3>
+          <div class="schedule-classes">
+            <div class="schedule-class" data-class="Йога" data-day="Суббота" data-time="09:00-10:00" data-trainer="Елена Лозовая">
+              <span class="class-time">09:00-10:00</span>
+              <span class="class-name">Йога</span>
+              <span class="class-trainer">Елена Лозовая</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+            <div class="schedule-class" data-class="Body Building" data-day="Суббота" data-time="11:00-12:00" data-trainer="Данил Марченко">
+              <span class="class-time">11:00-12:00</span>
+              <span class="class-name">Body Building</span>
+              <span class="class-trainer">Данил Марченко</span>
+              <a href="#" class="btn-secondary schedule-book">Записаться</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-trainers section-animate" id="trainers">
+    <div class="container">
+      <h2 class="heading heading--2">Наши тренеры</h2>
+      <div class="trainers-content">
+        <div class="trainer-card" data-trainer="Данил Марченко">
+          <img src="images/trainer-2.jpg" alt="Данил Марченко" class="trainer-img">
+          <h3>Данил Марченко</h3>
+          <p>Специализация: Body Building, 5 лет опыта.</p>
+          <a href="#" class="btn-secondary trainer-book">Записаться</a>
+        </div>
+        <div class="trainer-card" data-trainer="Светлана Микитюк">
+          <img src="images/trainer-3.jpg" alt="Светлана Микитюк" class="trainer-img">
+          <h3>Светлана Микитюк</h3>
+          <p>Специализация: Гимнастика, 7 лет опыта.</p>
+          <a href="#" class="btn-secondary trainer-book">Записаться</a>
+        </div>
+        <div class="trainer-card" data-trainer="Ярослав Михальцов">
+          <img src="images/trainer-4.jpg" alt="Ярослав Михальцов" class="trainer-img">
+          <h3>Ярослав Михальцов</h3>
+          <p>Специализация: Cross Fit, 4 года опыта.</p>
+          <a href="#" class="btn-secondary trainer-book">Записаться</a>
+        </div>
+        <div class="trainer-card" data-trainer="Андрей Глушаков">
+          <img src="images/trainer-5.jpg" alt="Андрей Глушаков" class="trainer-img">
+          <h3>Андрей Глушаков</h3>
+          <p>Специализация: Силовые тренировки, 6 лет опыта.</p>
+          <a href="#" class="btn-secondary trainer-book">Записаться</a>
+        </div>
+        <div class="trainer-card" data-trainer="Елена Лозовая">
+          <img src="images/trainer-6.jpg" alt="Елена Лозовая" class="trainer-img">
+          <h3>Елена Лозовая</h3>
+          <p>Специализация: Йога, 8 лет опыта.</p>
+          <a href="#" class="btn-secondary trainer-book">Записаться</a>
+        </div>
+        <div class="trainer-card" data-trainer="Дмитрий Петров">
+          <img src="images/trainer-7.jpg" alt="Дмитрий Петров" class="trainer-img">
+          <h3>Дмитрий Петров</h3>
+          <p>Специализация: Кардио, 5 лет опыта.</p>
+          <a href="#" class="btn-secondary trainer-book">Записаться</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-prices section-animate" id="prices">
+    <div class="container">
+      <h2 class="heading heading--2">Выбери свой фитнес</h2>
+      <div class="prices-box">
+        <div class="price-card" data-plan="Пробный">
+          <h3 class="heading heading--3">Пробный</h3>
+          <p class="price">500 ₽</p>
+          <p class="price-description">1 занятие на выбор</p>
+          <p class="price-description">Подходит для знакомства с клубом и тренерами.</p>
+          <a href="#" class="btn-primary price-book">Купить</a>
+        </div>
+        <div class="price-card" data-plan="Месячный">
+          <h3 class="heading heading--3">Месячный</h3>
+          <p class="price">2000 ₽</p>
+          <p class="price-description">Доступ ко всем групповым занятиям</p>
+          <p class="price-description">Идеально для регулярных тренировок.</p>
+          <a href="#" class="btn-primary price-book">Купить</a>
+        </div>
+        <div class="price-card" data-plan="Квартальный">
+          <h3 class="heading heading--3">Квартальный</h3>
+          <p class="price">5500 ₽</p>
+          <p class="price-description">Безлимитный доступ + 1 персональная тренировка</p>
+          <p class="price-description">Для тех, кто хочет стабильности и экономии.</p>
+          <a href="#" class="btn-primary price-book">Купить</a>
+        </div>
+        <div class="price-card" data-plan="Полугодовой">
+          <h3 class="heading heading--3">Полугодовой</h3>
+          <p class="price">10000 ₽</p>
+          <p class="price-description">Безлимитный доступ + 2 персональные тренировки</p>
+          <p class="price-description">Отличный выбор для долгосрочного прогресса.</p>
+          <a href="#" class="btn-primary price-book">Купить</a>
+        </div>
+        <div class="price-card" data-plan="Годовой">
+          <h3 class="heading heading--3">Годовой</h3>
+          <p class="price">18000 ₽</p>
+          <p class="price-description">Безлимитный доступ + 3 персональные тренировки</p>
+          <p class="price-description">Максимальная выгода для долгосрочных целей.</p>
+          <a href="#" class="btn-primary price-book">Купить</a>
+        </div>
+        <div class="price-card" data-plan="VIP">
+          <h3 class="heading heading--3">VIP</h3>
+          <p class="price">30000 ₽</p>
+          <p class="price-description">Безлимитный доступ + 10 персональных тренировок + индивидуальный план</p>
+          <p class="price-description">Премиум-пакет для максимального прогресса.</p>
+          <a href="#" class="btn-primary price-book">Купить</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-contact section-animate" id="contact">
+    <div class="container contact-box">
+      <div class="form-grp">
+        <h2 class="heading heading--2">Свяжитесь с нами</h2>
+        <form id="contact-form" class="form-flex">
+          <input type="text" name="name" class="form" placeholder="Имя" required>
+          <input type="email" name="email" class="form" placeholder="Email" required>
+          <textarea name="message" class="form" placeholder="Ваше сообщение"></textarea>
+          <button type="submit" class="btn-primary">Отправить</button>
+        </form>
+      </div>
+      <iframe class="map" src="https://yandex.ru/map-widget/v1/?um=constructor%3A..." frameborder="0"></iframe>
+    </div>
+  </section>
+
+  <section class="section-reviews section-animate" id="reviews">
+    <div class="container">
+      <h2 class="heading heading--2 reviews-heading">Отзывы наших клиентов</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-header">
+            <img src="images/avatar-anna.jpg" alt="Анна К." class="review-avatar">
+            <div>
+              <h3>Анна К.</h3>
+              <p class="rating">★★★★★</p>
+            </div>
+          </div>
+          <p>Очень крутой клуб! Тренеры профессионалы, оборудование новое, а атмосфера вдохновляет. За месяц тренировок заметно улучшила форму. Рекомендую всем!</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <img src="images/avatar-maria.jpg" alt="Мария С." class="review-avatar">
+            <div>
+              <h3>Мария С.</h3>
+              <p class="rating">★★★★★</p>
+            </div>
+          </div>
+          <p>Йога с Еленой — просто находка! Каждое занятие — это релакс и заряд энергии. Чувствую себя обновленной и более гибкой. Спасибо OxyGYM!</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <img src="images/avatar-igor.jpg" alt="Игорь П." class="review-avatar">
+            <div>
+              <h3>Игорь П.</h3>
+              <p class="rating">★★★★☆</p>
+            </div>
+          </div>
+          <p>Отличное место для кроссфита! Тренеры мотивируют, а групповые занятия заряжают энергией. Единственный минус — иногда зал переполнен.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <img src="images/avatar-ekaterina.jpg" alt="Екатерина М." class="review-avatar">
+            <div>
+              <h3>Екатерина М.</h3>
+              <p class="rating">★★★★★</p>
+            </div>
+          </div>
+          <p>Силовые тренировки с Андреем — это любовь! Он всегда подскажет, как правильно, и поддержит. За три месяца я стала намного сильнее!</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <img src="images/avatar-alexey.jpg" alt="Алексей В." class="review-avatar">
+            <div>
+              <h3>Алексей В.</h3>
+              <p class="rating">★★★★★</p>
+            </div>
+          </div>
+          <p>Кардио с Дмитрием — это огонь! Занятия интенсивные, но тренер умеет держать баланс. Чувствую, как улучшается выносливость.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <img src="images/avatar-olga.jpg" alt="Ольга Р." class="review-avatar">
+            <div>
+              <h3>Ольга Р.</h3>
+              <p class="rating">★★★★☆</p>
+            </div>
+          </div>
+          <p>Гимнастика со Светланой помогла мне улучшить осанку и координацию. Занятия интересные, но хотелось бы больше утренних слотов.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="section-footer section-animate" id="footer">
+    <div class="container footer-box">
+      <div class="contact-details">
+        <h3 class="nav-name">OXYGYM</h3>
+        <ul class="contact-data">
+          <li>г. Ростов-на-Дону, ул. Спортивная 15</li>
+          <li><a href="tel:+78995003240">+7(899) 500-32-40</a></li>
+          <li><a href="mailto:info@oxygym.ru">info@oxygym.ru</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h3 class="nav-name">Быстрый переход</h3>
+        <ul>
+          <li><a href="#hero">Главная</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#courses">Курсы</a></li>
+          <li><a href="#schedule">Расписание</a></li>
+          <li><a href="#prices">Выбери свой фитнес</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3 class="nav-name">Мы в соцсетях</h3>
+        <ul class="social-links">
+          <li><a href="https://vk.com/oxygym" class="social-link">VK</a></li>
+          <li><a href="https://instagram.com/oxygym" class="social-link">Instagram</a></li>
+          <li><a href="https://t.me/oxygym" class="social-link">Telegram</a></li>
+        </ul>
+      </div>
+      <p class="legel">© 2025 OxyGYM. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <div class="overlay">
+    <div class="popup">
+      <h2>Запишитесь на абонемент</h2>
+      <p class="popup-details"></p>
+      <form id="price-form">
+        <input type="text" name="name" class="form" placeholder="Имя" required>
+        <input type="email" name="email" class="form" placeholder="Email" required>
+        <input type="tel" name="tel" class="form" placeholder="Телефон" required>
+        <input type="hidden" name="plan" class="popup-plan">
+        <button type="submit" class="btn-primary">Отправить</button>
+        <button type="button" class="btn-secondary popup-close">Закрыть</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="schedule-overlay">
+    <div class="schedule-popup">
+      <h2>Записаться на занятие</h2>
+      <p class="schedule-details"></p>
+      <form id="schedule-form">
+        <input type="text" name="name" class="form" placeholder="Имя" required>
+        <input type="email" name="email" class="form" placeholder="Email" required>
+        <input type="tel" name="tel" class="form" placeholder="Телефон" required>
+        <input type="hidden" name="class" class="schedule-class">
+        <button type="submit" class="btn-primary">Отправить</button>
+        <button type="button" class="btn-secondary schedule-close">Закрыть</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="trainer-overlay">
+    <div class="trainer-popup">
+      <h2>Записаться к тренеру</h2>
+      <p class="trainer-details"></p>
+      <form id="trainer-form">
+        <input type="text" name="name" class="form" placeholder="Имя" required>
+        <input type="email" name="email" class="form" placeholder="Email" required>
+        <input type="tel" name="tel" class="form" placeholder="Телефон" required>
+        <input type="hidden" name="trainer" class="trainer-name">
+        <button type="submit" class="btn-primary">Отправить</button>
+        <button type="button" class="btn-secondary trainer-close">Закрыть</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="booking-overlay">
+    <div class="booking-popup">
+      <h2>Записаться на тренировку</h2>
+      <p class="booking-details">Заполните форму, чтобы начать свой путь к фитнесу!</p>
+      <form id="booking-form">
+        <input type="text" name="name" class="form" placeholder="Имя" required>
+        <input type="email" name="email" class="form" placeholder="Email" required>
+        <input type="tel" name="tel" class="form" placeholder="Телефон" required>
+        <button type="submit" class="btn-primary">Отправить</button>
+        <button type="button" class="btn-secondary booking-close">Закрыть</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="subscription-overlay">
+    <div class="subscription-popup">
+      <h2>Узнать об абонементах</h2>
+      <p>Выберите абонемент, который подходит вам! Свяжитесь с нами для подробностей.</p>
+      <form id="subscription-form">
+        <input type="text" name="name" class="form" placeholder="Имя" required>
+        <input type="email" name="email" class="form" placeholder="Email" required>
+        <input type="tel" name="tel" class="form" placeholder="Телефон" required>
+        <button type="submit" class="btn-primary">Отправить</button>
+        <button type="button" class="btn-secondary close-subscription">Закрыть</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
